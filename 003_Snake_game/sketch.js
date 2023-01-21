@@ -1,6 +1,5 @@
 let s;
 let scl = 20;
-
 let food;
 
 function setup() {
@@ -17,15 +16,18 @@ function pickLocation() {
   food.mult(scl);
 }
 
+function mousePressed() {
+  s.total++;
+}
+
 function draw() {
   background(51);
+  if (s.eat(food)) {
+    pickLocation();
+  }
+  s.death();
   s.update();
   s.show();
-
-  if (s.eat(food)) {
-    food = pickLocation();
-  }
-
   fill(255, 0, 100);
   rect(food.x, food.y, scl, scl);
 }
